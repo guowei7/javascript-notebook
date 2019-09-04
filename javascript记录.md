@@ -376,4 +376,130 @@
 >   >   ```
 >   >   变量add指定了函数自我调用的返回值。  
 >   >   自我调用函数只执行一次，add变量可以作为一个函数使用。非常棒的部分是它可以访问函数上一层作用域的计数器。这个叫做javascript闭包。它使得函数拥有私有变量变成可能。计数器受匿名函数的作用域保护，只能通过add方法修改。  
->   >   闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰。直观的说就是形成一个不销毁的栈环境。
+>   >   闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰。直观的说就是形成一个不销毁的栈环境。  
+>* javascript HTML DOM  
+>   >1. DOM简介
+>   >   >* HTML DOM(文档对象模型)  
+>   >   >   当网页被加载时，浏览器会创建页面的文档对象模型，HTML DOM模型被构造为对象的树。  
+>   >   >   <img src="./DOM树.png">    
+>   >   >* 查找HTML元素  
+>   >   >   通常，通过javascript，您需要操作HTML元素。  
+>   >   >   为了做到这件事情，您必须首先找到该元素。有三种方法来做这件事:
+>   >   >   * 通过id找到HTML元素  
+>   >   >      getElementById()  
+>   >   >   * 通过标签名找到HTML元素  
+>   >   >      getElementsByTagName()  
+>   >   >   * 通过类名找到HTML元素  
+>   >   >      getElementsByClassName()  
+>   >2. DOM HTML  
+>   >   >* 改变HTML输出流  
+>   >   >   javascript能够创建动态的HTML内容。  
+>   >   >   在javascript中,document.write()可用于直接向HTML输出流写内容。  
+>   >   >* 改变HTML内容  
+>   >   >   修改HTML内容的最简单方式是使用innerHTML属性。
+>   >   >   doucment.getElementById(id).innerHTML = 新的HTML  
+>   >   >* 改变HTML属性  
+>   >   >   如需改变HTML元素的属性，请使用这个语法:
+>   >   >   document.getElementById(id).attribute=新属性值  
+>   >3. DOM CSS  
+>   >   >* 改变HTML样式  
+>   >   >   如需改变HTML元素的样式，请使用这个语法:  
+>   >   >   document.getElementById(id).style.property=新样式  
+>   >   >   注:property中原本font-size等带'-'的均用驼峰命名修改，如fontSize  
+>   >   >* 使用事件  
+>   >   >   HTML DOM允许我们通过触发事件来执行代码。比如以下事件:  
+>   >   >   * 元素被点击  
+>   >   >   * 页面加载完成  
+>   >   >   * 输入框被修改  
+>   >   >   * ...  
+>   >4. DOM 事件  
+>   >   >* 对事件做出反应  
+>   >   >   我们可以在时间发生时执行javascript，比如当用户在HTML元素上点击时  
+>   >   >   如需在用户点击某个元素时执行代码，请向一个HTML事件属性添加javascript代码  
+>   >   >   onclick=javascript  
+>   >   >   HTML事件的例子:  
+>   >   >   * 当用户点击鼠标时  
+>   >   >   * 当网页已加载时  
+>   >   >   * 当图像已加载时  
+>   >   >   * 当鼠标移动到元素上时  
+>   >   >   * 当输入字段被改变时  
+>   >   >   * 当提交HTML表单时  
+>   >   >   * 当用户触发按键时  
+>   >   >* onload和onunload事件  
+>   >   >   onload和onunload事件会在用户进入或离开页面时触发。  
+>   >   onload事件可用于检测访问者的浏览器类型和浏览器版本，并基于这些信息来加载网页的正确  
+>   >   >   onload和onunload事件可用于处理cookie。
+>   >   >   ``` javascript 
+>   >   >   <body onload="checkCookies()"></body>  
+>   >   >   ```  
+>   >   >* onchange事件  
+>   >   >   onchange事件常结合对输入字段的验证来使用。  
+>   >   >   下面是一个如何使用onchange的例子。当用户改变输入字段的内容时，会调用upperCase()函数  
+>   >   >   ``` javascript 
+>   >   >   <input type="text" id="fname" onchange="upperCase()">  
+>   >   >   ```  
+>   >   >* onmouseover、onmouseout、onmousedown、onmouseup以及onclick事件  
+>   >5. DOM EventListener  
+>   >   >* addEventListener()方法  
+>   >   >   在用户点击按钮时触发监听事件:  
+>   >   >   doucment.getElementById("myBtn").addEventListener("click",displayDate)   
+>   >   >   addEventListener方法用于向指定元素添加事件句柄。  
+>   >   >   addEventListener方法添加的事件句柄不会覆盖已存在的事件句柄。  
+>   >   >   你可以向一个元素添加多个事件句柄。  
+>   >   >   你可以向同个元素添加多个同类型的事件句柄，如:两个"click"事件。  
+>   >   >   你可以向任何DOM对象添加事件监听，不仅仅是HTML元素。如：window对象  
+>   >   >   addEventListener方法可以更简单的控制事件(冒泡与捕获)。  
+>   >   >   你可以使用removeEventListener方法来移除事件的监听。  
+>   >   >   语法:  
+>   >   >   element.addEventListener(evern,function,useCapture);  
+>   >   >   第一个参数是事件的类型(如"click"或"mousedown")。  
+>   >   >   第二个参数是事件触发后调用的函数。  
+>   >   >   第三个参数是布尔值用于描述事件是冒泡还是捕获。该参数是可选的。  
+>   >   >   注意:不要使用"on"前缀。例如，使用"click",而不是使用"onclick"  
+>   >   >* 向window对象添加事件句柄  
+>   >   >   addEventListener() 方法允许你在 HTML DOM 对象添加事件监听， HTML DOM 对象如： HTML 元素, HTML 文档, window 对象。或者其他支出的事件对象如: <strong>xmlHttpRequest</strong>对象。  
+>   >   >* 事件冒泡或事件捕获  
+>   >   >   事件传递有两种方式：冒泡与捕获。  
+>   >   >   事件传递定义了元素事件触发的顺序。 如果你将p元素插入到div 元素中，用户点击p元素, 哪个元素的 "click" 事件先被触发呢？  
+>   >   >   在<i>冒泡</i>中，内部元素的事件会先被触发，然后再触发外部元素，即：p元素的点击事件先触发，然后会触发div元素的点击事件。  
+>   >   >   在<i>捕获</i>中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： div 元素的点击事件先触发 ，然后再触发p元素的点击事件。  
+>   >   >   addEventlistener()方法可以指定"useCapture"参数来设置传递类型:
+>   >   >   addEventlistener(event,function,useCapture);
+>   >   >   默认值为false，及冒泡传递，当值为true时，事件使用捕获传递。  
+>   >   >* removeEventListener()方法  
+>   >   >   removeEventListener()方法移除由addEventListener()方法添加的事件句柄  
+>   >   >   element.removeEventListener("mousemove",myFunctiont);  
+>   >6. DOM 元素  
+>   >   >* 创建新的HTML元素-appendChild()  
+>   >   >   要创建新的HTML元素(节点)需要先创建一个元素，然后在已存在的元素中添加它。
+>   >   >* 创建新的HTML元素-insertBefore()  
+>   >   >   以上的实例我们使用了appendChild()方法，它用于添加新元素到尾部。  
+>   >   >   如果我们需要将新元素添加到开始位置，可以使用insertBefore()方法。
+>   >   >* 移除已存在的元素-removeChild()  
+>   >   >   要移除一个元素，你需要知道该元素的父元素。  
+>   >   >* 替换HTML元素-replaceChild()  
+>   >   >   我们可以使用replaceChild()方法来替换HTML DOM中的元素。  
+>   >7. HTML Collection对象  
+>   >   >* HTMLCollection对象  
+>   >   >   getElementsByTagName方法返回HTMLCollection对象。  
+>   >   >   HTMLCollection对象类似包含HTML元素的一个数组。  
+>   >   >* HTMLCollection对象length属性  
+>   >   >   HTMLCollection对象的length属性定义了集合中元素的数量。
+>   >   >   注意:HTMLCollection不是一个数组，无法使用数组的方法:valueOf(),pop()等。
+>   >8. NodeList对象  
+>   >   NodeList对象是一个从文档中获取的节点列表(集合)。  
+>   >   NodeList对象类似HTMLCollection对象。  
+>   >   所有浏览器的childNodes属性返回的是NodeList对象。  
+>   >   大部分浏览器的querySelectorAll()返回NodeList对象。  
+>   >   >* NodeList对象length属性  
+>   >   >   NodeList对象length属性定义了节点列表中元素的数量。  
+>   >   >* HTMLCollection与NodeList的区别  
+>   >   >   * HTMLCollection是HTML元素的集合，NodeList是一个文档节点的集合。  
+>   >   >   * HTMLCollection元素可以通过name，id或索引来获取。
+>   >   >   * 只有NodeList对象有包含属性节点和文本节点  
+>   >   >   ``` javascript 
+>   >   >   plist = document.querySelectorAll("p");
+>   >   >   pcoll = document.getElementsByTagName("p");
+>   >   >   ```  
+>   >   >   plist返回的是固定的值  
+>   >   >   pcoll获取后，若html页面有变化刚好添加或移除了p标签，则pcoll也会跟着变

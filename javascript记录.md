@@ -502,4 +502,91 @@
 >   >   >   pcoll = document.getElementsByTagName("p");
 >   >   >   ```  
 >   >   >   plist返回的是固定的值  
->   >   >   pcoll获取后，若html页面有变化刚好添加或移除了p标签，则pcoll也会跟着变
+>   >   >   pcoll获取后，若html页面有变化刚好添加或移除了p标签，则pcoll也会跟着变。
+>* javascript对象  
+>   >1. javascript对象  
+>   >   >javascript中的所有事物都是对象:字符串、数值、数组、函数...  
+>   >   >此外，javascript允许自定义对象。  
+>   >   >* javascript对象  
+>   >   >   对象只是一种特殊的数据。对象拥有属性和方法。  
+>   >   >   * 访问对象的属性  
+>   >   >       objectName.propertyName  
+>   >   >   * 访问对象的方法  
+>   >   >       objectName.methodName()  
+>   >   >* 创建javascript对象  
+>   >   >   * 定义并创建对象的实例  
+>   >   >       ``` javascript  
+>   >   >       person = {firstname:"John",lastname:"Doe",age:50,eyecolor:"blue"};  
+>   >   >       ```  
+>   >   >   * 使用对象构造器  
+>   >   >       ``` javascript  
+>   >   >       function person(firstname,lastname,age,eyecolor){
+>   >   >           this.firstname = firstname;
+>   >   >           this.lastname = lastname;  
+>   >   >           this.age=age;  
+>   >   >           this.eyecolor = eyecolor;
+>   >   >           this.changeName = changeName;
+>   >   >           function changeName(name){
+>   >   >               this.lastname = name;
+>   >   >           }
+>   >   >       }  
+>   >   >      ```  
+>   >2. javascript prototype(原型对象)  
+>   >   >所有的javascript对象都会从一个prototype(原型对象)中继承属性和方法。  
+>   >   >* prototype继承  
+>   >   >   * Date对象从Date.prototype继承。  
+>   >   >   * Array对象从Array.prototype继承。  
+>   >   >   * Person对象从Person.prototype继承。  
+>   >   >   所有javascript中的对象都是位于原型链顶端的Object的实例。  
+>   >   >   javascript对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜索，还会搜索该对象的原型，以及该对象的原型的原型，依次层层向上搜索，知道找到一个名字匹配的属性或到达原型链的末尾。  
+>   >   >* 添加属性和方法  
+>   >   >   有的时候我们想要在所有已经存在的对象添加新的属性或方法。  
+>   >   >   另外，有时候我们想要在对象的构造函数中添加属性和方法。  
+>   >   >   使用prototype属性就可以给对象的构造函数添加新的属性。  
+>   >3. javascript Number对象  
+>   >   >   javascript数字可以使用也可以不使用小数点来书写。  
+>   >   >   极大或极小的数字可通过科学计数法来写。  
+>   >   >* 所有javascript数字均为64位  
+>   >   >   javascript不是类型语言，与许多其他编程语言不同，javascript不定义不同类型的数字，比如整数、短、长、浮点等等。  
+>   >   >   在javascript中，数字不分为整数类型和浮点型类型，所有的数字都是由浮点类型。javascript采用IEEE754标准定义的64位浮点格式表示数字  
+>   >   >* 精度  
+>   >   >   整数(不使用小数点或指数计数法)最多为15位。  
+>   >   >   小数的最大位数是17，但是浮点运算并不总是100%准确。  
+>   >   >* 八进制和十六进制  
+>   >   >   如果前缀为0，则javascript会把数值常量解释为八进制数，如果前缀为0和"x"，则解释为十六进制数。  
+>   >   >   但是你可以使用toString()方法输出16进制、8进制、2进制  
+>   >   >* 无穷大(Infinity)  
+>   >   >   当数字运算结果超过了javascript所能表示的数字的上限(溢出),结果为一个特殊的无穷大(infinity)值，分正负无穷大，基于它们的运算结果还是无穷大。  
+>   >   >* NaN-非数字值  
+>   >   >   NaN属性是代表非数字值得特殊值，该属性用于指示某个值不是数字。可以把Number对象设置为该值，来指示不是数字值。  
+>   >   >   你可以使用isNaN()全局函数来判断一个值是否是NaN值。  
+>   >   >   ``` javascript  
+>   >   >   var x = 1000/"apple";
+>   >   >   isNaN(x);//返回true  
+>   >   >   var y=100/"1000";
+>   >   >   isNaN(y);//返回false  
+>   >   >   var x = 1000/0;
+>   >   >   isNaN(x); //返回false,无穷大是一个数字  
+>   >   >   ```  
+>   >   >* 数字可以是数字或者对象  
+>   >   >   数字可以私有数据进行初始化，就像x=123;  
+>   >   >   javascript数字对象初始化数据，var y=new Number(123);  
+>   >4. javascript 字符串对象  
+>   >   >* javascript字符串  
+>   >   >   一个字符串用于存储一系列字符就像"John Doe"。  
+>   >   >   一个字符串可以使用单引号或双引号。  
+>   >   >   你使用位置(索引)可以访问字符串中任何的字符  
+>   >   >* 字符串(String)  
+>   >   >   字符串(String)使用长度属性length来计算字符串的长度  
+>   >   >* 在字符串中查找字符串  
+>   >   >   字符串使用indexOf()来定位字符串中一个指定的字符首次出现的位置。  
+>   >   >   如果没有找到对应的字符函数返回-1。lastIndexOf()方法在字符串末尾开始查找字符串出现的位置。  
+>   >   >* 内容匹配  
+>   >   >   match()函数用来查找字符串中特定的字符，并且如果找到的话，则返回这个字符。  
+>   >   >* 替换内容  
+>   >   >   replace()方法 在字符串中用 某些字符替换另一些字符。  
+>   >   >* 字符串大小写转换  
+>   >   >   字符串大小写转换使用函数toUpperCase()和toLowerCase()。  
+>   >   >* 字符串转为数组  
+>   >   >   字符串使用split()函数转为数组。  
+>   >5. javascript Date(日期) 对象

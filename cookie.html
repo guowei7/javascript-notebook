@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cookie</title>
+	<meta charset="utf-8">
+</head>
+<body onload="checkCookie()">
+	<script type="text/javascript">
+		function setCookie(cname,cvalue){
+			var date = new Date();
+			date.setTime(date.getTime()+(24*60*60*1000))
+			var expires = "expires="+date.toGMTString();
+			document.cookie=cname+"="+cvalue+";"+expires;
+		}
+		function getCookie(cname){
+			var cvalue="";
+			var cookieStr = document.cookie;
+			var cookieArr = cookieStr.split(';');
+			for(var i =0;i<cookieArr.length;i++){
+				var name = cookieArr[i].split('=')[0];
+				if(name === cname){
+					cvalue = cookieArr[i].split('=')[1];
+					break;
+				}
+			}
+			return cvalue;
+		}
+		function checkCookie(){
+			var user = getCookie('username');
+			if(user){
+				alert("欢迎"+document.cookie);
+			}else{
+				var username = prompt("请输入姓名","");
+				if(username!=null&&username!=""){
+					setCookie('username',username);p
+				}
+			}
+		}
+	</script>
+</body>
+</html>

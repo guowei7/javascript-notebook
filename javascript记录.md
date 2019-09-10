@@ -166,15 +166,15 @@
 >   >* HTML表单自动验证、HTML约束验证。
 >* javascript验证API  
 >   >* 约束验证DOM方法
->   >   ><table>
->   >   >   <thead>
->   >   >       <tr><th>方法</th><th>描述</th></tr>
->   >   >   </thead>
->   >   >   <tbody>
->   >   >       <tr><td>checkValidity()</td><td>如果input元素中的数据是合法的返回true，否则返回fasle</td></tr>
->   >   >       <tr><td>setCustomValidity</td><td>设置input元素的validationMessage属性，用于自定义错误提示信息的方法。使用 setCustomValidity 设置了自定义提示后，validity.customError 就会变成true，则 checkValidity 总是会返回false。如果要重新判断需要取消自定义提示</td></tr>
->   >   >   </tbody> 
->   >   ></table> 
+>   >   <table>
+>   >      <thead>
+>   >          <tr><th>方法</th><th>描述</th></tr>
+>   >      </thead>
+>   >      <tbody>
+>   >          <tr><td>checkValidity()</td><td>如果input元素中的数据是合法的返回true，否则返回fasle</td></tr>
+>   >          <tr><td>setCustomValidity</td><td>设置input元素的validationMessage属性，用于自定义错误提示信息的方法。使用 setCustomValidity 设置了自定义提示后，validity.customError 就会变成true，则 checkValidity 总是会返回false。如果要重新判断需要取消自定义提示</td></tr>
+>   >      </tbody> 
+>   >   </table> 
 >   >* 约束验证DOM属性
 >   >   <table>
 >   >       <thead>
@@ -589,4 +589,205 @@
 >   >   >   字符串大小写转换使用函数toUpperCase()和toLowerCase()。  
 >   >   >* 字符串转为数组  
 >   >   >   字符串使用split()函数转为数组。  
->   >5. javascript Date(日期) 对象
+>   >5. javascript Date(日期) 对象  
+>   >   日期对象用于处理日期和时间。  
+>   >   >* 创建日期  
+>   >   >   Date对象用于处理日期和时间。  
+>   >   >   可以通过new关键词来定义Date对象。以下代码定义了名为myDate的Date对象  
+>   >   >   有四种方式初始化日期  
+>   >   >       * new Date() //当前日期和时间  
+>   >   >       * new Date(milliseconds) //返回从1970年1月1日至今的毫秒数  
+>   >   >       * new Date(dateString) //  
+>   >   >       * new Date(year,month,day,hours,minutes,seconds,milliseconds)  
+>   >   >* 设置日期  
+>   >   >   通过使用针对日期对象的方法，我们可以很容易地对日期进行操作。  
+>   >   >   为日期对象设置一个特定的日期(2010年1月14日)  
+>   >   >   ``` javascript  
+>   >   >   var myDate=new Date();
+>   >   >   myDate.setFullYear(2010,0,14);
+>   >   >   ```  
+>   >   >   将日期对象设置为5天后的日期  
+>   >   >   ``` javascript 
+>   >   >   var myDate = new Date()  
+>   >   >   myDate.setDate(myDate.getDate()+5)  
+>   >   >   ```  
+>   >6. javascript Array(数组)对象  
+>   >   数组对象的作用是:使用单独的变量名来存储一系列的值。 
+>   >   <a href="https://www.runoob.com/jsref/jsref-obj-array.html" target="_blank">数组对象的参考手册</a> 
+>   >   >* 创建一个数组  
+>   >   >   * 常规方式  
+>   >   >   ``` javascript  
+>   >   >   var myCars = new Array();
+>   >   >   myCars[0] = "Saab";  
+>   >   >   myCars[1] = "Volvo";  
+>   >   >   myCars[2] = "BMW";  
+>   >   >   ```  
+>   >   >   * 简洁方式  
+>   >   >   ``` javascript  
+>   >   >   var myCars = new Array("Saab","Volvo","BMW");  
+>   >   >   ```  
+>   >   >   * 字面  
+>   >   >   ``` javascript  
+>   >   >   var myCars = ["Saab","Volvo","BMW"];  
+>   >   >   ```  
+>   >   >* 在一个数组中你可以有不同的对象  
+>   >   >   所有的JavaScript变量都是对象。数组元素是对象。函数是对象。  
+>   >   >   因此，你可以在数组中有不同的变量类型。  
+>   >   >   你可以在一个数组中包含对象元素、函数、数组  
+>   >7. javascript Boolean(布尔) 对象  
+>   >   Boolean对象用于将非布尔值转换为布尔值。  
+>   >   >* 创建Boolean对象  
+>   >   >   Boolean对象代表两个值"true"或者"false"。  
+>   >   >   如果布尔对象无初始值或者其值为: 0,-0,null,"",false,undefined,NaN那么对象的值为false。否则其值为true。  
+>   >8. javascript Math(算数)对象  
+>   >   Math(算数)对象的作用是:执行常见的算法任务。  
+>   >   <a href="https://www.runoob.com/jsref/jsref-obj-math.html" target="_blank">Math对象参考手册</a>  
+>   >   >* Math对象  
+>   >   >   Math对象提供多种算数值类型和函数。无需在使用这个对象之前对它进行定义。  
+>   >9. javascript RegExp对象  
+>   >   RegExp：是正则表达式的简写。  
+>   >   正则表达式描述了字符的模式对象。  
+>   >   当你检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp就是这种模式  
+>   >   >* 语法  
+>   >   >   ``` javascript  
+>   >   >   var patt = new RegExp(pattern,modifiers);
+>   >   >   var patt = /pattern/modifiers;
+>   >   >   ```  
+>   >   >   模式描述了一个表达式模型  
+>   >   >   修饰符(modifiers)描述了检索是否是全局，区分大小写等。  
+>   >   >* RegExp修饰符  
+>   >   >   i:修饰符是用来执行不区分大小写的匹配。  
+>   >   >   g:修饰符是用于执行全文的搜索(而不是在找到第一个就停止查找，而是找到所有的匹配)  
+>   >   >* test()  
+>   >   >   test方法搜索字符串指定的值，根据结果并返回真或假。  
+>   >   >* exec()  
+>   >   >   exec方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回null。  
+>* JS浏览器BOM  
+>   >1. JavaScript Window-浏览器对象模型  
+>   >   浏览器对象模型(BOM)使JavaScript有能力与浏览器"对话"。  
+>   >   >* 浏览器对象模型(BOM)  
+>   >   >   浏览器对象模型(BOM)尚无正式标准。  
+>   >   >   由于现代浏览器已经实现了JavaScript交互性方面的相同方法和属性，因此常被认为是BOM的方法和属性。  
+>   >   >* Window对象  
+>   >   >   所有浏览器都支持window对象。它表示浏览器窗口。  
+>   >   >   所有javascript全局对象、函数以及变量均自动成为window对象的成员。  
+>   >   >   全局变量是window对象的属性。  
+>   >   >   全局函数是window对象的方法。  
+>   >   >   甚至HTML DOM的document也是window对象的属性之一。
+>   >   >* Window尺寸  
+>   >   >   有三种方法能够确定浏览器窗口的尺寸。  
+>   >   >   对于IE、Chrome、Firefox、Opera以及Safari:  
+>   >   >   window.innerHeight//浏览器窗口的内部高度(包括滚动条)  
+>   >   >   window.innerWidth//浏览器窗口的内部宽度(包括滚动条)  
+>   >   >   对于IE8、7、6、5：  
+>   >   >   document.documentElement.clientHeight  
+>   >   >   document.documentElement.clientWidth  
+>   >   >   或者  
+>   >   >   document.body.clientHeight  
+>   >   >   document.body.clientWidth  
+>   >   >* 其他Window方法  
+>   >   >   window.open()-打开新窗口  
+>   >   >   window.close()-关闭当前窗口  
+>   >   >   window.moveTo()-移动当前窗口  
+>   >   >   window.resizeTo()-调整当前窗口的尺寸  
+>   >   >* 定义全局变量与在window对象上直接定义属性差别  
+>   >   >   1、 全局变量不能通过delete操作符删除；而window属性上定义的变量可以通过delete删除。  
+>   >   >   2、 访问未声明的变量会抛出错误，但是通过查询window对象，可以知道某个可能未声明的变量是否存在。  
+>   >   >   3、 有些自执行函数里面的变量，想要外部也访问到的话，在window对象上直接定义属性。  
+>   >2. javascript Window Screen  
+>   >   window screen对象包含有关用户屏幕的信息。  
+>   >   >* Window Screen  
+>   >   >   window.screen对象在编写时可以不使用window这个前缀。  
+>   >   >   screen.availWidth - 可用的屏幕宽度  
+>   >   >   screen.availHeight - 可用的屏幕高度
+>   >   >   注意:以像素计，减去界面特性，比如窗口任务栏。  
+>   >3. javascript Window Location  
+>   >   window.location对象用于获取当前页面的地址(URL),并把浏览器重定向到新页面。  
+>   >   >* window Location  
+>   >   >   window.location对象在编写时可不使用window这个前缀  
+>   >   >   * location.hostname//返回web主机的域名  
+>   >   >   * location.pathname//返回当前页面的路径和文件名  
+>   >   >   * location.port//返回web主机的端口(80或443)  
+>   >   >   * location.protocol//返回所使用的web协议(http或https)
+>   >   >* window Location Href  
+>   >   >   location.href属性返回当前页面的URL。  
+>   >   >* window Location Assign  
+>   >   >   location.assign()方法加载新的文档。  
+>   >4. javascript Window History  
+>   >   window.history对象包含浏览器的历史。  
+>   >   >* window History  
+>   >   >   window.history对象在编写时可不适用window这个前缀。  
+>   >   >   history.back()-与在浏览器点击后退按钮相同  
+>   >   >   history.forward()-与在浏览器中点击向前按钮相同  
+>   >   >* history go  
+>   >   >   history.go(1)//表示前进一个页面  
+>   >   >   history.go(-1)//表示后退一个页面  
+>   >   >   history.go(0)//表示刷新页面  
+>   >5. javascript window navigator  
+>   >   window.navigator对象包含有关访问者浏览器的信息  
+>   >   警告:  
+>   >   来自navigator对象的信息具有误导性，不应该被用于检测浏览器版本，这是因为:
+>   >       * navigator数据可被浏览器使用者更改  
+>   >       * 一些浏览器对测试站点会识别错误  
+>   >       * 浏览器无法报告晚于浏览器发布的新操作系统  
+>   >   >* 浏览器检测  
+>   >   >   由于navigator可误导浏览器检测，使用对象检测可用来嗅探不同的浏览器。如  
+>   >   >   if(window.opera){ }  
+>   >6. javascript弹窗  
+>   >   可以在javascript中创建三种消息框:警告框、确认框、提示框。  
+>   >   >* 警告框  
+>   >   >   警告框经常用于确保用户可以得到某些信息。  
+>   >   >   当警告框出现后，用户需要点击确定按钮才能继续进行操作  
+>   >   >   window.alert("sometext");  
+>   >   >* 确认框  
+>   >   >   确认框通常用于验证是否接受用户操作。  
+>   >   >   当确认框弹出时，用户可以 点击"确认"或者"取消"来确定用户操作。  
+>   >   >   点击"确认",确认框返回true，如果点击"取消",确认框返回false。  
+>   >   >   window.confirm("sometext");  
+>   >   >* 提示框  
+>   >   >   提示框经常用于提示用户在进入页面前输入某个值。  
+>   >   >   当提示框出现后，用户需要输入某个值，然后点击确认或取消按钮才能继续操作。  
+>   >   >   如果用户点击确认，那么返回值为输入值。如果用户点击取消，那么返回值为null  
+>   >   >   window.prompt("sometext","defaultValue");  
+>   >7. javascript计时事件  
+>   >   javascript一个 设定的时间间隔之后来执行代码，我们称之为计时事件。  
+>   >   >* javascript计时事件  
+>   >   >   通过使用javascript，我们有能力做到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行。两个关键方法是:  
+>   >   >   * setInterval()-间隔指定的 毫秒数不停地执行指定的代码。  
+>   >   >   * setTimeout()-在指定的毫秒数后执行指定代码  
+>   >   >* setInterval方法  
+>   >   >   window.setInterval("javascript function",milliseconds);
+>   >   >   第一个参数是函数(function)。  
+>   >   >   第二个参数间隔的毫秒数。
+>   >   >   clearInterval()方法用于停止setInterval()方法执行的函数代码。  
+>   >   >* setTimeout方法  
+>   >   >   window.setTimeout("javascript function",milliseconds);  
+>   >   >   clearTimeout()方法用于停止执行setTimeout方法的函数代码。  
+>   >8. javascript Cookie  
+>   >   Cookie用于存储web页面的用户信息。  
+>   >   >* 什么是Cookie?  
+>   >   >   Cookie是一些数据，存储于你电脑上的文本文件中。  
+>   >   >   当web服务器向浏览器发送web页面时，在连接关闭后，服务端不会记录用户的信息  
+>   >   >   Cookie的作用就是用于解决"如何记录客户端的用户信息"  
+>   >   >   Cookie以名/值对形式存储如:username=John Doe  
+>   >   >   当浏览器从服务器上请求web页面时，属于该页面的cookie会被添加到该请求中。服务端通过这种方式来获取用户信息。  
+>   >   >* 使用javascript创建Cookie  
+>   >   >   javascript可以使用document.cookie属性来创建、读取、及删除。  
+>   >   >   ``` javascript  
+>   >   >   document.cookie="username=Jhon Doe";
+>   >   >   document.cookie="username=Jhon Doe;expires=Thu,18 Dec 2043 12:00:00 GMT"//为cookie添加一个过期时间(UTC或GMT时间)
+>   >   >   document.cookie="username=Jhon Doe;expires=Thu,18 Dec 2043 12:00:00 GMT;path=/";//使用path参数告诉 浏览器cookie的路径。  
+>   >   >   ```   
+>   >   >* 使用javascript修改Cookie  
+>   >   >   在javascript中，修改cookie类似于创建cookie，如下所示
+>   >   >   document.cookie="username=John Smith;expires=Thu,18 Dec 2043 12:00:00 GMT;path=/";  
+>   >   >* 使用javascript删除Cookie  
+>   >   >   删除cookie非常简单。你只需要设置expires参数为以前的时间即可。  
+>   >   >   document.cookie="username=;expires=Thu,01 Jan 1970 00:00:00 GMT";  
+>   >   >   注意:当你删除时不必指定cookie的值。  
+>   >   >*  Cookie字符串  
+>   >   >   document.cookie 属性看起来像一个普通的文本字符串，其实它不是。  
+即使您在 document.cookie 中写入一个完整的 cookie 字符串, 当您重新读取该 cookie   信息时，cookie 信息是以名/值对的形式展示的。  
+如果您设置了新的 cookie，旧的 cookie 不会被覆盖。 新 cookie 将添加到   document.cookie 中，所以如果您重新读取document.cookie，您将获得如下所示的数据：  
+cookie1=value; cookie2=value;   
+>   >   ><a href="./cookie.html">设置和获取cookie值</a>

@@ -104,21 +104,50 @@
 // console.log(total);
 // 数字字典序
 //   
-function getMnumFromDirSort(n,m){
-    var DirSort = [];
-    for(var i=1;i<=n;i++){
-        if(i<10){
-            DirSort.push(i);
+// function getMnumFromDirSort(n,m){
+//     var DirSort = [];
+//     for(var i=1;i<=n;i++){
+//         if(i<10){
+//             DirSort.push(i);
+//         }else{
+//             if(i%10==0){//最后一位等于0
+//                 var per = DirSort.indexOf(i/10);
+//                 DirSort.splice(per+1,0,i);
+//             }else{//最后一位不等于0
+//                 var per = DirSort.indexOf(i-1);
+//                 DirSort.splice(per+1,0,i);
+//             }
+//         }
+//     }
+//     return DirSort[m-1];
+// }
+// console.log(getMnumFromDirSort(150001,50));
+function solve(n,m){
+    var ans = 1;
+    while(m!=0){
+        var cnt = getTreeCount(ans,n);
+        if(cnt>=m){
+            m--;
+            if(m==0)
+                break;
+            ans=ans*10;
         }else{
-            if(i%10==0){//最后一位等于0
-                var per = DirSort.indexOf(i/10);
-                DirSort.splice(per+1,0,i);
-            }else{//最后一位不等于0
-                var per = DirSort.indexOf(i-1);
-                DirSort.splice(per+1,0,i);
-            }
+            m=m-cnt;
+            ans++;
         }
     }
-    return DirSort[m-1];
+    return ans;
 }
-console.log(getMnumFromDirSort(11,2));
+function getTreeCount(root,n){
+    var count = 1;
+    var p = 10;
+    for(;root*p<=n;p*=10){
+        if(root*p+p-1<n){
+            count += p;
+        }else{
+            count += n-root*p+1;
+        }
+    }
+    return count;
+}
+console.log(solve(11,2));

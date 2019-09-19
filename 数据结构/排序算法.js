@@ -110,7 +110,7 @@
 //     			counter[bucket] = [];
 //     		}
 //     		counter[bucket].push(arr[j]);
-    		
+
 //     	}
 //     	var pos = 0;
 //     	for(var j=0;j<counter.length;j++){
@@ -271,7 +271,7 @@
 // 		arr[j+step] = arr[j];
 // 	}
 // 	arr[j+step]=temp;
-	
+
 // }
 // var arr = [6,4,3,3,5,2,1,-1];
 // console.log(shellSort(arr))
@@ -301,3 +301,26 @@
 // }
 // var arr = [6,4,3,3,5,2,1,-1];
 // console.log(CountSort(arr))
+
+function ShellSort(arr) {
+	var step = Math.floor(arr.length/2);
+	while(step>=1){
+		for(var i=step;i<arr.length;i++){
+			insertSortI(arr,i,step);
+		}
+		step = Math.floor(step/2);
+	}
+    return arr;
+}
+function insertSortI(arr,i,step){
+		var index = i-step;
+		var temp = arr[i];
+		while(index>=0&&arr[index]>temp){
+			[arr[index],arr[index+step]] = [arr[index+step],arr[index]];
+			index -= step;
+		}
+		arr[index+step] = temp;
+	
+}
+var arr = [5, 11, 0, 12, 22, 14, 13];
+console.log(ShellSort(arr));

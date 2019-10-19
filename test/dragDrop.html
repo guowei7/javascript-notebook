@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta author="guo">
+	<meta charset="utf-8">
+	<title>拖拽</title>
+	<style type="text/css">
+		.box{
+			position: absolute;
+			height:100px;
+			width:100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+   <div class="dragable box"></div>
+   <script type="text/javascript">
+   	var dragDrop = (function(){
+   		var draging = null;
+   		    offsetX = 0;
+   		    offsetY = 0;
+   		function handleEvent(event){
+   			switch(event.type){
+   				case "mousedown":
+   					if(event.target.className.indexOf("dragable")!=-1){
+   						draging = event.target;
+   						offsetX = event.clientX - draging.offsetLeft;
+   						offsetY = event.clientY - draging.offsetTop;
+   					}
+   					break;
+   				case "mousemove":
+   					if(draging!=null){
+   						draging.style.left = event.clientX-offsetX+"px";
+   						draging.style.top = event.clientY-offsetY+"px";
+   					}
+   					break;
+   				case "mouseup":
+   					draging = null;
+   					break;
+   				default:
+   					break;
+   			}
+   		}
+   		return {
+   			enable:function(){
+   				document.addEventListener("mousedown",handleEvent);
+   				document.addEventListener("mousemove",handleEvent);
+   				document.addEventListener("mouseup",handleEvent);
+   			},
+   			disable:function(){
+   				document.removeEventListener("mousedown",handleEvent);
+   				document.removeEventListener("mouseover",handleEvent);
+   				document.removeEventListener("mouseup",handleEvent);
+   			}
+   		}
+   	})();
+   	dragDrop.enable();
+   </script>
+</body>
+</html>

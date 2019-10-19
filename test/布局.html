@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>布局</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+		html,body{
+			height:100%;
+			margin:0px;
+			padding:0px;
+		}
+		header{
+			height:50px;
+			background-color:red;
+
+		}
+		main{
+			display: flex;
+			flex-flow: row wrap;
+			height:350px;
+			background-color: yellow
+		}
+		main div{
+			flex-grow: 1;
+			flex-shrink: 0;
+			flex-basis: 200px;
+			background-color: green
+		}
+		footer{
+			height:50px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<header></header>
+	<main>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</main>
+	<footer></footer>
+</body>
+</html>

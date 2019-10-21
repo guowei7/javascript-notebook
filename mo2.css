@@ -8,6 +8,15 @@
 
 }
 
+a{
+    color:green;
+}
+a:link{
+    color:blue;
+}
+a:visited{
+    color:red;
+}
 #head,
 
 #foot,
